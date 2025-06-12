@@ -1,0 +1,70 @@
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Build artifacts
+target/
+build/
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.log
+
+# Maven specific
+.mvn/wrapper/maven-wrapper.jar
+/mvnw
+/mvnw.cmd
+
+# Node.js and Angular specific
+node_modules/
+dist/
+.angular/
+npm-debug.log
+yarn-error.log
+.env
+.gitkeep # Si lo usaste en alguna carpeta vacía para que Git la rastree, ignóralo para el commit
+
+# OS generated files
+.DS_Store
+Thumbs.db
+.gradle/
+.project
+.classpath
+.settings/
+*.log
+
+# For Angular projects under specific folders:
+# Asegurarse de que estas carpetas también tengan su .gitignore si las moviste tal cual.
+# Si estás usando un solo .gitignore para el monorepo,
+# estas entradas ignorarán lo que esté dentro de esas carpetas en CUALQUIER lugar.
+# Ejemplo: node_modules/ en app-recetas-angular/node_modules/
+# o dist/ en app-recetas-angular/dist/
+app-recetas-angular/node_modules/
+app-recetas-angular/dist/
+app-recetas-angular/.angular/
+app-recetas-angular/npm-debug.log*
+
+# For Spring Boot projects under specific folders:
+# Ejemplo: target/ en app-recetas-backend/target/
+app-recetas-backend/target/
+app-recetas-backend/build/
+app-recetas-backend/*.jar
+app-recetas-backend/*.war
+app-recetas-backend/*.zip
+app-recetas-backend/*.tar.gz
+app-recetas-backend/*.log
+app-recetas-backend/.gradle/ # Si usas Gradle en el futuro
+app-recetas-backend/.project
+app-recetas-backend/.classpath
+app-recetas-backend/.settings/
+
+# Specific to H2 Database in-memory console
+h2db/ # Carpeta si H2 guarda persistencia en archivo (no es el caso si usas ":mem:recetasdb")
+
+# Si usas algún archivo de configuración local que no quieras subir
+# application-local.properties
+# .env.development.local
