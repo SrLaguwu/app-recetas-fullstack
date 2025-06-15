@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs'; // 1. Importamos Observable
 import { Receta } from '../../models/receta.model';
 import { RecipeService } from '../../services/recipe';
@@ -9,7 +10,9 @@ import { RecipeService } from '../../services/recipe';
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    RouterModule ],
   templateUrl: './recipe-list.html',
   styleUrls: ['./recipe-list.css']
 })

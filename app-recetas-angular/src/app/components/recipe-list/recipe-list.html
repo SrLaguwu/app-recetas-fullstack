@@ -6,13 +6,13 @@
     <p>No se encontraron recetas. ¡Crea una nueva!</p>
   </div>
 
-  <div *ngFor="let receta of recetas" class="recipe-card">
+  <a *ngFor="let receta of recetas" [routerLink]="['/receta', receta.id]" class="recipe-card-link">
     <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="recipe-image">
     <div class="recipe-content">
       <h3>{{ receta.nombre }}</h3>
       <p>{{ receta.descripcion }}</p>
       <span>Tiempo: {{ receta.tiempoPreparacionMinutos }} min</span>
     </div>
-  </div>
+  </a>
 
 </div>

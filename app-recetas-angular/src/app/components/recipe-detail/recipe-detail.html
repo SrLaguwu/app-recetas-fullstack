@@ -1,0 +1,27 @@
+<div *ngIf="receta$ | async as receta" class="detail-container">
+  <a routerLink="/" class="back-link">&larr; Volver a la lista</a>
+
+  <h1>{{ receta.nombre }}</h1>
+  <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="detail-image">
+
+  <div class="detail-section">
+    <h3>Descripción</h3>
+    <p>{{ receta.descripcion }}</p>
+  </div>
+
+  <div class="detail-section">
+    <h3>Tiempo de Preparación</h3>
+    <p>{{ receta.tiempoPreparacionMinutos }} minutos</p>
+  </div>
+
+  <div class="detail-section">
+    <h3>Ingredientes</h3>
+    <p>{{ receta.ingredientes }}</p>
+  </div>
+
+  <div class="detail-section">
+    <h3>Instrucciones</h3>
+    <p class="instructions">{{ receta.instrucciones }}</p>
+  </div>
+
+</div>

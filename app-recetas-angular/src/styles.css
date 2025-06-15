@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* Ruta: src/styles.scss */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2980b9;
+}
