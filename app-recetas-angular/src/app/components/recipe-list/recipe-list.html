@@ -1,0 +1,18 @@
+<div *ngIf="recetas$ | async as recetas" class="recipe-container">
+
+  <h2>Mis Recetas</h2>
+
+  <div *ngIf="recetas.length === 0" class="no-recipes">
+    <p>No se encontraron recetas. ¡Crea una nueva!</p>
+  </div>
+
+  <div *ngFor="let receta of recetas" class="recipe-card">
+    <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="recipe-image">
+    <div class="recipe-content">
+      <h3>{{ receta.nombre }}</h3>
+      <p>{{ receta.descripcion }}</p>
+      <span>Tiempo: {{ receta.tiempoPreparacionMinutos }} min</span>
+    </div>
+  </div>
+
+</div>

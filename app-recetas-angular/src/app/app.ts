@@ -1,37 +1,21 @@
 // Ruta: src/app/app.ts
 
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router'; // <-- 1. Importar RouterModule
-import { CommonModule } from '@angular/common'; // <-- 2. Importar CommonModule
-
-import { RecipeService } from './services/recipe';
-import { Receta } from './models/receta.model';
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RecipeListComponent } from './components/recipe-list/recipe-list'; // <-- ¡NUEVO!
 
 @Component({
   selector: 'app-root',
-  standalone: true,  // <-- Esto indica que es un componente autónomo
+  standalone: true,
   imports: [
-    RouterModule,    // <-- 3. Añadir RouterModule aquí
-    CommonModule     // <-- 4. Añadir CommonModule también (para directivas como *ngIf, *ngFor)
+    RouterModule,
+    CommonModule,
+    RecipeListComponent // <-- ¡NUEVO! Lo importamos para poder usarlo en el HTML
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app-recetas-angular';
-
-  constructor(private recipeService: RecipeService) {}
-
-  ngOnInit(): void {
-    console.log('AppComponent iniciado. Llamando al servicio de recetas...');
-
-    this.recipeService.getRecetas().subscribe({
-      next: (recetas: Receta[]) => {
-        console.log('✅ ¡Éxito! Datos recibidos del backend:', recetas);
-      },
-      error: (error) => {
-        console.error('❌ ¡Error! No se pudo conectar al backend:', error);
-      }
-    });
-  }
 }
