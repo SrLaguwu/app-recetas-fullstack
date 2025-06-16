@@ -1,7 +1,13 @@
 <div *ngIf="receta$ | async as receta" class="detail-container">
-  <a routerLink="/" class="back-link">&larr; Volver a la lista</a>
+  <div class="detail-header">
+    <a routerLink="/" class="back-link">&larr; Volver a la lista</a>
+    <div>
+    <a [routerLink]="['/receta/editar', receta.id]" class="btn-editar">Editar Receta</a>
+    <button (click)="onDelete(receta.id)" class="btn-eliminar">Eliminar</button>
+  </div>
+  </div>
+    <h1>{{ receta.nombre }}</h1>
 
-  <h1>{{ receta.nombre }}</h1>
   <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="detail-image">
 
   <div class="detail-section">

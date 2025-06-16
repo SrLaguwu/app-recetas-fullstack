@@ -1,18 +1,45 @@
-<div *ngIf="recetas$ | async as recetas" class="recipe-container">
+<div class="container">
 
-  <h2>Mis Recetas</h2>
-
-  <div *ngIf="recetas.length === 0" class="no-recipes">
-    <p>No se encontraron recetas. ¡Crea una nueva!</p>
+  <div class="header">
+    <h2 class="header-decoration">Mis Recetas 🍳</h2>
+    <a routerLink="/receta/crear" class="btn-crear">Crear Nueva Receta</a>
   </div>
 
-  <a *ngFor="let receta of recetas" [routerLink]="['/receta', receta.id]" class="recipe-card-link">
-    <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="recipe-image">
-    <div class="recipe-content">
-      <h3>{{ receta.nombre }}</h3>
-      <p>{{ receta.descripcion }}</p>
-      <span>Tiempo: {{ receta.tiempoPreparacionMinutos }} min</span>
+  <div *ngIf="recetas$ | async as recetas; else loadingOrEmpty">
+    <div *ngIf="recetas.length > 0; else noRecipes" class="recipe-grid">
+
+      <a *ngFor="let receta of recetas" [routerLink]="['/receta', receta.id]" class="recipe-card-link">
+        <div class="recipe-card">
+          <div class="recipe-image-wrapper">
+            <img [src]="receta.imagenUrl" alt="Imagen de {{ receta.nombre }}" class="recipe-image">
+          </div>
+          <div class="recipe-content">
+            <h3>{{ receta.nombre }}</h3>
+            <p class="recipe-description">{{ receta.descripcion }}</p>
+            <div class="recipe-time">
+              <svg xmlns="http://www.w3.org/2000/svg" class="time-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="time-badge">{{ receta.tiempoPreparacionMinutos }} min</span>
+            </div>
+          </div>
+        </div>
+      </a>
+      </div>
+  </div>
+
+  <ng-template #noRecipes>
+    <div class="no-recipes">
+        <div class="no-recipes-content">
+          <div class="no-recipes-icon">👨‍🍳</div>
+          <h3>No tienes recetas</h3>
+          <p>¡Anímate a crear tu primera obra maestra culinaria!</p>
+          <a routerLink="/receta/crear" class="btn-crear">Crear Nueva Receta</a>
+        </div>
     </div>
-  </a>
+  </ng-template>
+
+  <ng-template #loadingOrEmpty>
+    </ng-template>
 
 </div>

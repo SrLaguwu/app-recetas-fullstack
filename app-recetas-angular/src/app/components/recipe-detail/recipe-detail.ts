@@ -2,7 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router'; // 1. Importamos ActivatedRoute y RouterModule
+import { ActivatedRoute, RouterModule, Router  } from '@angular/router'; // 1. Importamos ActivatedRoute y RouterModule
 import { Observable } from 'rxjs';
 import { Receta } from '../../models/receta.model';
 import { RecipeService } from '../../services/recipe';
@@ -21,7 +21,8 @@ export class RecipeDetailComponent implements OnInit {
   // 3. Inyectamos ActivatedRoute para leer la URL y RecipeService para pedir datos
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +33,26 @@ export class RecipeDetailComponent implements OnInit {
     if (id) {
       this.receta$ = this.recipeService.getRecetaById(+id); // el '+' convierte el string 'id' a número
     }
+  }
+
+    // 3. Nuevo método para manejar la eliminación
+  onDelete(id: number): void {
+    // Usamos el diálogo de confirmación nativo del navegador
+    const confirmacion = confirm('¿Estás seguro de que quieres eliminar esta receta? Esta acción no se puede deshacer.');
+
+    if (confirmacion) {
+      // Si el usuario hace clic en "Aceptar"
+      this.recipeService.eliminarReceta(id).subscribe({
+        next: () => {
+          console.log('Receta eliminada exitosamente');
+          // Navegamos de vuelta a la lista principal
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error('Error al eliminar la receta:', err);
+        }
+      });
+    }
+    // Si el usuario hace clic en "Cancelar", no hacemos nada.
   }
 }

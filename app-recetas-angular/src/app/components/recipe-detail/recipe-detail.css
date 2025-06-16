@@ -37,3 +37,44 @@
   white-space: pre-wrap; /* Respeta los saltos de línea y espacios */
   line-height: 1.6;
 }
+
+/* Añadir al final de recipe-detail.css */
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn-editar {
+  background-color: #3498db;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover {
+  background-color: #2980b9;
+  color: white;
+}
+
+/* Estilos del boton de eliminar */
+/* Añadir al final de recipe-detail.css */
+
+.btn-eliminar {
+  background-color: #e74c3c; /* Un rojo para indicar peligro */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none; /* Los botones no necesitan borde si tienen fondo */
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 1rem; /* Espacio entre los botones */
+  transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
+}
